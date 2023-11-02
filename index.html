@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <ul id="countdown-list"></ul>
+        <button onclick="startCountdown(10)">Start timer</button>
+    </div>
+    <script>
+        function startCountdown(count) {
+            var countdownList = document.getElementById("countdown-list");
+            countdownList.innerHTML = "";
+
+            function callbackHell(num) {
+                if (num >= 1) {
+                    var listItem = document.createElement("li");
+                    listItem.textContent = num;
+                    countdownList.appendChild(listItem);
+                    setTimeout(function () {
+                        callbackHell(num - 1);
+                    }, 1000);
+                } else {
+                    var listItem = document.createElement("li");
+                    listItem.textContent = "Happy Independence Day";
+                    countdownList.appendChild(listItem);
+                }
+            }
+
+            callbackHell(count);
+        }
+    </script>
+</body>
+
+</html>
